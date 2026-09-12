@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COCOVA — Thick Shakes, Coco Treats &amp; Coffee | Bardoli</title>
+<meta name="description" content="COCOVA Bardoli — rich coco treats, creamy thick shakes and freshly brewed coffee. Taste That Stays with Your Heart. Shop 1, Sardar Patel Marg, Bardoli, Gujarat.">
+<link rel="icon" href="assets/favicon.png">
+<style>
+:root{
+  --espresso:#2B1D15;
+  --cocoa:#3E2B20;
+  --bark:#54382A;
+  --mocha:#7A5843;
+  --tan:#B98C5E;
+  --latte:#C9A37B;
+  --cream:#F6F0E4;
+  --cream2:#EFE5D3;
+  --paper:#F3EBDA;
+  --line:rgba(201,163,123,.28);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;
+  color:var(--cream);
+  background:#241811;
+  font-size:18px;line-height:1.72;font-weight:450;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+/* blurred cafe backdrop, exactly like the reference presentation */
+body::before{
+  content:'';position:fixed;inset:-40px;z-index:-2;
+  background:url('assets/r-bg.jpg') center/cover no-repeat;
+  filter:blur(26px) saturate(1.1) brightness(.55);
+}
+body::after{content:'';position:fixed;inset:0;z-index:-1;background:radial-gradient(1200px 700px at 50% 0%,rgba(90,58,38,.35),rgba(20,13,9,.85))}
+
+.shell{
+  max-width:1180px;margin:26px auto;border-radius:22px;overflow:hidden;
+  box-shadow:0 50px 120px rgba(0,0,0,.65);background:var(--cocoa);
+}
+h1,h2,h3,.disp{font-family:Georgia,'Times New Roman',serif;font-weight:700;line-height:1.15}
+.ttl{
+  font-family:Georgia,serif;text-transform:uppercase;letter-spacing:.18em;
+  text-align:center;font-size:clamp(1.3rem,2.3vw,1.95rem);font-weight:700;
+}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+.pad{padding:0 clamp(18px,3.4vw,44px)}
+
+/* ============ NAV ============ */
+.nav{
+  background:var(--cocoa);display:flex;align-items:center;justify-content:space-between;
+  gap:18px;padding:14px clamp(18px,3vw,34px);position:relative;z-index:60;
+  border-bottom:1px solid rgba(201,163,123,.14);
+}
+.nav-l,.nav-r{display:flex;align-items:center;gap:clamp(14px,2.4vw,34px);flex:1}
+.nav-r{justify-content:flex-end}
+.nav a.lnk{font-size:.96rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,240,228,.92);white-space:nowrap;transition:.25s;position:relative;padding:10px 2px}
+.nav a.lnk:hover{color:var(--tan)}
+.nav a.lnk::after{content:'';position:absolute;left:0;bottom:-5px;height:1px;width:0;background:var(--tan);transition:.3s}
+.nav a.lnk:hover::after{width:100%}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo img{width:38px;height:38px}
+.logo span{font-family:Georgia,serif;font-size:1.15rem;letter-spacing:.3em;color:var(--cream)}
+.ico{width:24px;height:24px;stroke:rgba(246,240,228,.95);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.nav-r a[aria-label],.nav-r .burger{
+  min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;
+  border-radius:10px;transition:background .25s;
+}
+.nav-r a[aria-label]:hover,.nav-r .burger:hover{background:rgba(246,240,228,.1)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer}
+.burger span{width:24px;height:2.5px;background:var(--cream);display:block;border-radius:2px;transition:.3s}
+.mob-menu{
+  position:fixed;inset:0;background:rgba(43,29,21,.98);z-index:200;display:none;
+  flex-direction:column;align-items:center;justify-content:center;gap:28px;
+}
+.mob-menu.on{display:flex}
+.mob-menu a{font-family:Georgia,serif;font-size:1.4rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream);padding:12px 26px;min-height:44px;display:flex;align-items:center}
+.mob-menu .x{position:absolute;top:16px;right:16px;width:48px;height:48px;font-size:2.1rem;line-height:1;color:var(--tan);background:none;border:0;cursor:pointer;display:grid;place-items:center;border-radius:12px}
+.mob-menu .x:hover{background:rgba(246,240,228,.1)}
+
+/* ============ HERO ============ */
+.hero{position:relative;min-height:clamp(420px,58vw,640px);display:grid;place-items:center;overflow:hidden}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(43,29,21,.34) 0%,rgba(43,29,21,.06) 22%,rgba(43,29,21,0) 45%),
+    linear-gradient(180deg,rgba(107,75,54,0) 30%,rgba(107,75,54,.12) 48%,rgba(107,75,54,.34) 64%,rgba(107,75,54,.62) 78%,rgba(107,75,54,.88) 90%,#6B4B36 100%);
+}
+.hero-card{
+  position:relative;z-index:3;background:var(--paper);color:var(--espresso);
+  text-align:center;padding:clamp(26px,3.4vw,42px) clamp(30px,5vw,64px);
+  box-shadow:0 26px 60px rgba(0,0,0,.4);max-width:min(560px,86%);
+  border:1px solid rgba(122,88,67,.18);
+}
+.hero-card h1{
+  font-size:clamp(1.4rem,3.3vw,2.35rem);text-transform:uppercase;letter-spacing:.14em;
+  line-height:1.25;margin-bottom:16px;
+}
+.hero-card p{font-size:clamp(1rem,1.35vw,1.13rem);color:var(--bark);font-weight:500;line-height:1.85;letter-spacing:.015em}
+.hero-card .rule{width:52px;height:1px;background:var(--tan);margin:14px auto}
+
+/* ============ FEATURES (arched band) ============ */
+.arch{position:relative;background:linear-gradient(180deg,#6B4B36 0%,#4A3325 55%,#3E2B20 100%);padding-bottom:clamp(40px,5vw,64px);margin-top:-1px}
+.arch-top{display:block;width:100%;height:clamp(48px,7vw,96px);margin-top:calc(-1 * clamp(48px,7vw,96px));position:relative;z-index:4}
+.arch .inner{position:relative;z-index:5;padding-top:6px}
+.arch .ttl{color:var(--cream);margin-bottom:clamp(28px,3.6vw,46px)}
+.f4{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,2vw,26px)}
+.f{text-align:center;transition:.35s cubic-bezier(.2,.8,.2,1)}
+.f:hover{transform:translateY(-6px)}
+.f .ring{
+  width:clamp(84px,9vw,112px);height:clamp(84px,9vw,112px);margin:0 auto 18px;
+  background:var(--paper);border:2px solid var(--paper);border-radius:50%;
+  display:grid;place-items:center;transition:.35s;
+  box-shadow:0 10px 26px rgba(0,0,0,.28);
+}
+.f:hover .ring{background:var(--tan);border-color:var(--tan);box-shadow:0 16px 34px rgba(0,0,0,.4)}
+.f .ring svg{width:48%;height:48%;stroke:var(--cocoa);fill:none;stroke-width:2.9;stroke-linecap:round;stroke-linejoin:round}
+.f:hover .ring svg{stroke:var(--espresso)}
+.f p{font-size:clamp(1.02rem,1.2vw,1.1rem);font-weight:500;letter-spacing:.02em;color:rgba(246,240,228,.95);line-height:1.6;max-width:190px;margin:0 auto}
+
+/* ============ MOSAIC / NEW ============ */
+.mosaic-sec{background:var(--cocoa);padding:clamp(38px,5vw,64px) 0 clamp(32px,4vw,52px)}
+.mosaic-sec .ttl{color:var(--cream);margin-bottom:clamp(24px,3vw,38px)}
+.mosaic{display:grid;grid-template-columns:1fr;gap:clamp(10px,1.4vw,18px)}
+/* each pair keeps its own photo + description locked together */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.4vw,18px);align-items:stretch}
+.pair.flip .tile.ph{order:2}
+.pair.flip .tile.tx{order:1}
+.tile{position:relative;overflow:hidden;min-height:clamp(240px,24vw,320px)}
+.tile.ph img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.tile.ph:hover img{transform:scale(1.07)}
+.tile.tx{background:var(--paper);color:var(--espresso);padding:clamp(26px,3.1vw,42px);display:flex;flex-direction:column;justify-content:center}
+.tile.tx.dark{background:var(--bark);color:var(--cream)}
+.tile.tx h3{
+  font-size:clamp(1.05rem,1.45vw,1.32rem);font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;margin-bottom:14px;line-height:1.3;color:var(--espresso);
+}
+.tile.tx.dark h3{color:var(--tan)}
+.tile.tx p{font-size:clamp(.95rem,1.1vw,1.04rem);line-height:1.78;color:var(--bark)}
+.tile.tx.dark p{color:rgba(246,240,228,.88)}
+.tile.tx .pr{margin-top:18px;font-family:Georgia,serif;font-size:1.55rem;font-weight:700;color:var(--bark)}
+.tile.tx.dark .pr{color:var(--tan)}
+/* ---- gallery ---- */
+.sublede{text-align:center;max-width:660px;margin:-14px auto clamp(24px,3vw,36px);color:rgba(246,240,228,.88);font-size:clamp(1.06rem,1.25vw,1.14rem);line-height:1.75}
+.galgrid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:clamp(150px,15vw,190px);gap:clamp(10px,1.3vw,16px)}
+.g{position:relative;overflow:hidden;margin:0;border-radius:4px}
+.g.big{grid-column:span 2;grid-row:span 2}
+.g img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.g:hover img{transform:scale(1.07)}
+.g figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:26px 18px 14px;
+  background:linear-gradient(180deg,transparent,rgba(30,20,14,.9));
+  font-size:.92rem;font-weight:600;color:var(--cream);letter-spacing:.02em;
+}
+.allbtn{display:block;width:min(420px,84%);margin:clamp(24px,3vw,38px) auto 0;text-align:center;
+  background:linear-gradient(180deg,#C69A6D,#A87A50);color:#2B1D15;padding:13px;border-radius:8px;
+  font-size:.92rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;transition:.3s;min-height:50px;line-height:26px}
+.allbtn:hover{filter:brightness(1.1);transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.4)}
+
+/* ============ GHOST TYPOGRAPHY / TREATS ============ */
+.treats{position:relative;overflow:hidden;padding:clamp(40px,5.5vw,72px) 0 clamp(48px,6vw,86px);
+  background:linear-gradient(180deg,#3E2B20,#33231A 60%,#2B1D15)}
+.treats::before{content:'';position:absolute;inset:0;background:url('assets/r-bg.jpg') center/cover;opacity:.05;filter:blur(5px)}
+.treats .ttl{color:var(--cream);margin-bottom:clamp(18px,2.4vw,30px);position:relative;z-index:5}
+.rows{position:relative;z-index:4}
+.grow{position:relative;z-index:1;display:flex;align-items:center;min-height:clamp(120px,15vw,200px);margin:clamp(4px,1vw,10px) 0}
+.grow .ghost{
+  position:relative;z-index:2;
+  font-family:Georgia,serif;font-weight:700;text-transform:uppercase;
+  font-size:clamp(2.6rem,9.6vw,7.4rem);line-height:.92;letter-spacing:.03em;
+  white-space:nowrap;
+  color:transparent;
+  -webkit-text-stroke:2.5px rgba(246,240,228,.82);
+  text-shadow:0 2px 22px rgba(0,0,0,.25);
+}
+@supports not ((-webkit-text-stroke:1px #000)){
+  .grow .ghost{color:rgba(246,240,228,.5)}
+}
+.grow.r1{justify-content:flex-start}
+.grow.r2{justify-content:center}
+.grow.r3{justify-content:flex-end}
+.grow .cut{position:absolute;z-index:4;width:clamp(120px,17vw,240px);filter:drop-shadow(0 26px 40px rgba(0,0,0,.55));
+  transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.grow:hover .cut{transform:scale(1.06) rotate(-3deg)}
+.grow.r1 .cut{left:clamp(2%,10vw,16%);top:-8%}
+.grow.r2 .cut{left:50%;transform:translateX(-50%);top:-4%}
+.grow.r2:hover .cut{transform:translateX(-50%) scale(1.06) rotate(-3deg)}
+.grow.r3 .cut{right:clamp(4%,12vw,20%);top:-6%}
+.grow .cap{
+  position:absolute;z-index:5;font-size:clamp(.9rem,1.05vw,1rem);letter-spacing:.03em;
+  color:rgba(246,240,228,.96);font-style:italic;font-weight:500;
+  text-shadow:0 2px 12px rgba(0,0,0,.7);max-width:230px;line-height:1.55;
+}
+.grow.r1 .cap{right:6%;top:34%}
+.grow.r2 .cap{left:4%;bottom:16%}
+.grow.r3 .cap{left:8%;top:40%}
+/* swirl sits at the very back, behind ghost text AND behind the food cut-outs */
+.swirl{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.55}
+.swirl path{fill:none;stroke:rgba(246,240,228,.42);stroke-width:1.2}
+
+/* ============ DRINKS TABS ============ */
+.drinks{background:linear-gradient(180deg,#2B1D15,#3E2B20);padding:clamp(40px,5vw,66px) 0 clamp(46px,5.5vw,72px)}
+.drinks .ttl{color:var(--cream);margin-bottom:clamp(22px,2.8vw,34px)}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.2vw,16px);margin-bottom:clamp(22px,2.8vw,34px)}
+.tab{
+  padding:13px 10px;border-radius:8px;border:1px solid var(--tan);background:transparent;
+  color:var(--cream);font-size:clamp(.82rem,1vw,.92rem);letter-spacing:.07em;
+  text-transform:uppercase;cursor:pointer;transition:.28s;font-family:inherit;font-weight:600;
+  min-height:48px;
+}
+.tab:hover{background:rgba(185,140,94,.18)}
+.tab.on{background:var(--paper);color:var(--espresso);border-color:var(--paper)}
+.panel{display:none}
+.panel.on{display:block;animation:fade .5s ease}
+@keyframes fade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.d4{display:flex;gap:clamp(12px,1.4vw,20px);align-items:stretch;
+  overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;
+  scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;
+  padding:4px 2px 8px;scroll-padding-left:2px}
+.d4::-webkit-scrollbar{display:none}
+.d4 .d{flex:0 0 clamp(210px,22%,260px);scroll-snap-align:start}
+/* fade hint that content continues past the right edge */
+.drow{position:relative}
+.drow::after{content:'';position:absolute;top:0;right:-2px;width:56px;height:100%;
+  pointer-events:none;opacity:0;transition:opacity .3s;
+  background:linear-gradient(90deg,rgba(62,43,32,0),var(--cocoa) 88%)}
+.drow.more::after{opacity:1}
+.d{background:transparent;transition:.35s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column}
+.d:hover{transform:translateY(-5px)}
+.d p{flex:1}
+.dimg{overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5;background:#F7F3EA;border-radius:4px}
+.dimg img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.d:hover .dimg img{transform:scale(1.08)}
+.d h3{font-size:clamp(1.18rem,1.45vw,1.34rem);font-weight:700;margin:18px 0 10px;color:var(--cream);letter-spacing:.01em}
+.d p{font-size:clamp(1rem,1.1vw,1.06rem);line-height:1.7;color:rgba(246,240,228,.9)}
+.d .sz{margin-top:14px;font-size:clamp(1rem,1.1vw,1.08rem);font-weight:700;color:var(--tan);letter-spacing:.03em}
+
+/* ============ VISIT ============ */
+.visit{background:var(--paper);color:var(--espresso);padding:clamp(40px,5vw,66px) 0}
+.visit .ttl{color:var(--espresso);margin-bottom:clamp(24px,3vw,38px)}
+.v2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,26px)}
+.vcard{background:var(--cream2);padding:clamp(22px,2.8vw,36px);border:1px solid rgba(122,88,67,.16)}
+.vcard h4{font-size:.97rem;letter-spacing:.17em;text-transform:uppercase;color:var(--bark);margin-bottom:18px;font-family:inherit;font-weight:700}
+.vrow{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid rgba(122,88,67,.14)}
+.vrow:last-child{border:0}
+.vrow svg{width:19px;height:19px;stroke:var(--tan);fill:none;stroke-width:1.6;flex-shrink:0;margin-top:3px}
+.vrow b{display:block;font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mocha);margin-bottom:5px}
+.vrow p,.vrow a{font-size:1.02rem;font-weight:500;color:var(--espresso);line-height:1.62}
+.vrow a:hover{color:var(--tan)}
+.hrs{width:100%;border-collapse:collapse;font-size:1rem}
+.hrs td{padding:11px 0;border-bottom:1px solid rgba(122,88,67,.12);color:var(--bark);font-weight:500}
+.hrs td:last-child{text-align:right;font-family:Georgia,serif}
+.pill{display:inline-block;margin-top:20px;padding:10px 20px;border-radius:100px;background:rgba(110,150,90,.16);border:1px solid rgba(110,150,90,.45);color:#3F6830;font-size:.85rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+
+/* ============ FOOTER ============ */
+footer{background:var(--espresso);padding:clamp(38px,4.6vw,58px) 0 26px;font-size:1.05rem;line-height:1.8;color:rgba(246,240,228,.9)}
+.f4g{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:clamp(20px,3vw,40px);margin-bottom:34px}
+.f4g h5{color:var(--cream);font-size:.95rem;letter-spacing:.17em;text-transform:uppercase;margin-bottom:16px;font-family:inherit;font-weight:700}
+.f4g ul{list-style:none}
+.f4g li{padding:9px 0}
+.f4g a{color:rgba(246,240,228,.9);transition:.25s;display:inline-block;padding:3px 0;font-weight:450}
+.f4g a:hover{color:var(--tan)}
+.fbrand{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.fbrand img{width:40px}
+.fbrand span{font-family:Georgia,serif;font-size:1.1rem;letter-spacing:.28em;color:var(--cream)}
+.wm{font-family:Georgia,serif;font-size:clamp(2.4rem,12vw,9rem);text-align:center;color:rgba(246,240,228,.055);letter-spacing:.22em;line-height:1;margin:6px 0 24px;user-select:none}
+.socials{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+.socials a{
+  width:46px;height:46px;border-radius:50%;border:1px solid rgba(201,163,123,.45);
+  display:grid;place-items:center;color:var(--tan);transition:.28s cubic-bezier(.2,.8,.2,1);
+}
+.socials a:hover{background:var(--tan);border-color:var(--tan);color:var(--espresso);transform:translateY(-3px)}
+.socials svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.fbot{border-top:1px solid rgba(246,240,228,.09);padding-top:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.9rem;color:rgba(246,240,228,.68)}
+
+.rv{opacity:0;transform:translateY(26px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* carousel arrows (mobile) */
+.arrows{display:flex;justify-content:center;gap:12px;margin-top:22px}
+.arrows button{width:46px;height:46px;border-radius:50%;border:1px solid var(--tan);background:transparent;color:var(--cream);cursor:pointer;font-size:1.3rem;line-height:1;transition:.25s}
+.arrows button:hover:not(:disabled){background:var(--tan);color:var(--espresso)}
+.arrows button:disabled{opacity:.3;cursor:default}
+.d4{cursor:grab}.d4:active{cursor:grabbing}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:1240px){ .shell{margin:0;border-radius:0;max-width:100%} }
+@media(max-width:880px){
+  .f4{grid-template-columns:repeat(2,1fr);gap:26px}
+  .d4{grid-template-columns:1fr 1fr}
+  .v2{grid-template-columns:1fr}
+  .f4g{grid-template-columns:1fr 1fr}
+  .galgrid{grid-template-columns:1fr 1fr;grid-auto-rows:170px}
+  .g.big{grid-column:span 2;grid-row:span 1}
+}
+@media(max-width:700px){
+  .nav-l .lnk,.nav-r .lnk{display:none}
+  .nav-l{flex:0}
+  .nav{justify-content:space-between;padding:10px 14px;gap:8px}
+  .burger{display:flex}
+  .nav-r{flex:0;gap:10px}
+  .nav-r a[aria-label],.nav-r .burger{min-width:48px;min-height:48px}
+  .logo img{width:36px;height:36px}
+  .logo span{font-size:1.05rem;letter-spacing:.22em}
+  .f4{grid-template-columns:1fr;gap:22px}
+  .f{display:flex;flex-direction:column;align-items:center}
+  .f p{max-width:230px}
+  /* specials -> each pair stacks image above its own description */
+  .mosaic{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;scrollbar-width:none;-ms-overflow-style:none}
+  .mosaic::-webkit-scrollbar{display:none}
+  .pair{flex:0 0 84%;scroll-snap-align:center;grid-template-columns:1fr;gap:0}
+  .pair.flip .tile.ph{order:1}
+  .pair.flip .tile.tx{order:2}
+  .pair .tile.ph{min-height:230px}
+  .pair .tile.tx{min-height:0;padding:24px 22px 28px}
+  .arrows{display:flex}
+  /* gallery -> swipe carousel */
+  .galgrid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;scrollbar-width:none;grid-auto-rows:auto}
+  .galgrid::-webkit-scrollbar{display:none}
+  .galgrid .g{flex:0 0 80%;scroll-snap-align:center;height:230px}
+  .galgrid .g.big{flex:0 0 80%}
+  .sublede{font-size:1.04rem}
+  /* drinks -> swipe carousel */
+  .d4{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;scrollbar-width:none}
+  .d4::-webkit-scrollbar{display:none}
+  .d4 .d{flex:0 0 68%;scroll-snap-align:center}
+  .tabs{grid-template-columns:1fr 1fr}
+  /* treats: clean centered stack — image above word, no overlap */
+  .swirl{display:none}
+  .rows{display:flex;flex-direction:column;gap:6px}
+  .grow{
+    min-height:0;flex-direction:column;align-items:center;justify-content:flex-start;
+    text-align:center;margin:0;padding:14px 0 22px;
+  }
+  .grow+.grow{border-top:1px solid rgba(201,163,123,.16)}
+  .grow .cut{
+    position:static;width:min(190px,52vw);margin:0 auto 6px;
+    transform:none!important;
+  }
+  .grow:hover .cut{transform:none!important}
+  .grow.r1 .cut,.grow.r2 .cut,.grow.r3 .cut{left:auto;right:auto;top:auto}
+  .grow .ghost{
+    font-size:clamp(2rem,10.5vw,3.1rem);letter-spacing:.06em;
+    -webkit-text-stroke:1.6px rgba(246,240,228,.62);
+  }
+  .grow .cap{
+    display:block;position:static;max-width:280px;margin:8px auto 0;
+    font-size:.92rem;text-align:center;
+  }
+  .grow.r1 .cap,.grow.r2 .cap,.grow.r3 .cap{left:auto;right:auto;top:auto;bottom:auto}
+  .f4g{grid-template-columns:1fr;gap:26px}
+  .fbot{flex-direction:column;text-align:center}
+  /* 44px minimum touch targets */
+  .f4g li{padding:0}
+  .f4g li a{display:inline-flex;align-items:center;min-height:44px;min-width:44px;padding:4px 0}
+  .f4g li:not(:has(a)){min-height:44px;display:flex;align-items:center}
+  .vrow{padding:14px 0}
+  .vrow a{display:inline-flex;align-items:center;min-height:44px}
+  .logo{min-height:44px}
+}
+</style>
+</head>
+<body>
+
+<div class="mob-menu" id="mm">
+  <button class="x" id="mx" aria-label="Close">×</button>
+  <a href="#menu">Menu</a><a href="#about">About</a>
+  <a href="#treats">Treats</a><a href="#visit">Contact</a><a href="#gallery">Gallery</a>
+</div>
+
+<div class="shell">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-l">
+      <a href="#menu" class="lnk">Menu</a>
+      <a href="#about" class="lnk">About</a>
+      
+    </div>
+    <a href="#top" class="logo">
+      <img src="assets/logo-cream.png" alt="COCOVA logo">
+      <span>COCOVA</span>
+    </a>
+    <div class="nav-r">
+      <a href="#visit" class="lnk">Contact</a>
+      <a href="#gallery" class="lnk">Gallery</a>
+      <a href="tel:+919638883696" aria-label="Call">
+        <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>
+      </a>
+      <button class="burger" id="bg" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <img src="assets/r-hero.jpg" alt="COCOVA shakes and coffee flat lay">
+    <div class="hero-card">
+      <h1>Taste That Stays<br>With Your Heart</h1>
+      <div class="rule"></div>
+      <p>Rich coco treats. Creamy thick shakes.<br>Freshly brewed coffee, crafted with love in Bardoli.</p>
+    </div>
+  </section>
+
+  <!-- FEATURES ARCH -->
+  <section class="arch" id="about">
+    <svg class="arch-top" viewBox="0 0 1200 100" preserveAspectRatio="none">
+      <path d="M0,100 C300,0 900,0 1200,100 Z" fill="#6B4B36"/>
+    </svg>
+    <div class="inner pad">
+      <h2 class="ttl rv">What Makes Us Special</h2>
+      <div class="f4">
+        <div class="f rv">
+          <div class="ring"><svg viewBox="0 0 24 24"><path d="M12 21c-5 0-8-3-8-7 3 0 6 1 8 4 2-3 5-4 8-4 0 4-3 7-8 7z"/><path d="M12 18V9M12 9l-3-4M12 9l3-4"/></svg></div>
+          <p>Real cocoa, never artificial</p>
+        </div>
+        <div class="f rv">
+          <div class="ring"><svg viewBox="0 0 24 24"><path d="M6 3h12l-1.2 8.4A5 5 0 0 1 11.8 16h-.6a5 5 0 0 1-5-4.6L6 3z"/><path d="M8 21h8M12 16v5"/></svg></div>
+          <p>Extra thick, spoon-standing shakes</p>
+        </div>
+        <div class="f rv">
+          <div class="ring"><svg viewBox="0 0 24 24"><path d="M4 11h13v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-5z"/><path d="M17 12h2.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 7V4M12 7V4"/></svg></div>
+          <p>Freshly brewed coffee daily</p>
+        </div>
+        <div class="f rv">
+          <div class="ring"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.3l3.2 2"/></svg></div>
+          <p>Open late — till 12:30 AM</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GHOST TYPOGRAPHY TREATS -->
+  <section class="treats" id="treats">
+    <h2 class="ttl rv">Fresh Coco Treats Every Day</h2>
+    <div class="pad rows">
+      <svg class="swirl" viewBox="0 0 1200 620" preserveAspectRatio="none">
+        <path d="M60,150 C420,40 820,250 1140,110"/>
+        <path d="M80,360 C400,470 860,230 1130,340"/>
+        <path d="M100,540 C420,430 800,600 1120,470"/>
+      </svg>
+      <div class="grow r1 rv">
+        <span class="ghost">BROWNIE</span>
+        <img class="cut" src="assets/cut-brownie.png" alt="Chocolate brownie">
+        <span class="cap">Walnut fudge brownie, warm from the oven</span>
+      </div>
+      <div class="grow r2 rv">
+        <span class="ghost">WAFFLE</span>
+        <img class="cut" src="assets/cut-waffle.png" alt="Chocolate waffle">
+        <span class="cap">Belgian waffle with molten chocolate</span>
+      </div>
+      <div class="grow r3 rv">
+        <span class="ghost">DONUTS</span>
+        <img class="cut" src="assets/cut-donut.png" alt="Chocolate donut">
+        <span class="cap">Glazed choco-hazelnut donuts</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DRINKS TABS -->
+  <section class="drinks" id="menu">
+    <div class="pad">
+      <h2 class="ttl rv">Your Perfect Shake</h2>
+      <div class="tabs rv">
+        <button class="tab on" data-p="t1">Everyday Classic</button>
+        <button class="tab" data-p="t2">Signature</button>
+        <button class="tab" data-p="t3">Indian Special</button>
+        <button class="tab" data-p="t4">Coffee</button>
+      </div>
+
+      <div class="panel on" id="t1">
+        <div class="drow">
+          <div class="d4" id="c1">
+          <div class="d"><div class="dimg"><img src="assets/m-chocolate.jpg" alt="Chocolate thick shake"></div>
+            <h3>Chocolate</h3><p>Our everyday hero — deep real cocoa blended thick with full-cream milk.</p><div class="sz">₹90 · Chips / Kaju / Almond +20</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-kitkat.jpg" alt="Kitkat Loaded thick shake"></div>
+            <h3>Kitkat Loaded</h3><p>Crushed Kitkat folded through chocolate shake and stacked high on top.</p><div class="sz">₹120</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-oreo.jpg" alt="Oreo thick shake"></div>
+            <h3>Oreo</h3><p>Cookies and cream, blended till the biscuit speckles run right through.</p><div class="sz">₹100</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-butterscotch.jpg" alt="Golden Butterscotch thick shake"></div>
+            <h3>Golden Butterscotch</h3><p>Buttery caramel crunch with a classic butterscotch base.</p><div class="sz">₹100</div></div>
+                  <div class="d"><div class="dimg"><img src="assets/m-chocolate.jpg" alt="Brownie Loaded thick shake" loading="lazy"></div>
+            <h3>Brownie Loaded</h3><p>Chunks of walnut brownie blended right into a thick chocolate base.</p><div class="sz">₹120</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-chocolate.jpg" alt="Black Magic thick shake" loading="lazy"></div>
+            <h3>Black Magic</h3><p>Deep dark chocolate, intense and barely sweet — for the purists.</p><div class="sz">₹120</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-butterscotch.jpg" alt="Mango thick shake" loading="lazy"></div>
+            <h3>Mango</h3><p>Seasonal alphonso pulp blended thick with cold cream.</p><div class="sz">₹100</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-gulkand.jpg" alt="Rose thick shake" loading="lazy"></div>
+            <h3>Rose</h3><p>Delicate gulab syrup, light and floral over chilled milk.</p><div class="sz">₹90</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-gulkand.jpg" alt="Strawberry thick shake" loading="lazy"></div>
+            <h3>Strawberry</h3><p>Sweet strawberry blended smooth, finished with cream.</p><div class="sz">₹90</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-oreo.jpg" alt="White Magic thick shake" loading="lazy"></div>
+            <h3>White Magic</h3><p>Smooth white chocolate whipped into a silky cold shake.</p><div class="sz">₹120</div></div>
+        </div>
+        </div>
+        <div class="arrows"><button onclick="scr(\'c1\',-1)">‹</button><button onclick="scr('c1',1)">›</button></div>
+      </div>
+
+      <div class="panel" id="t2">
+        <div class="drow">
+          <div class="d4" id="c2">
+          <div class="d"><div class="dimg"><img src="assets/m-nutella.jpg" alt="Creamy Nutella thick shake"></div>
+            <h3>Creamy Nutella</h3><p>Pure Nutella, whipped smooth and served extra thick.</p><div class="sz">₹130</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-ferrero.jpg" alt="Ferrero Fusion thick shake"></div>
+            <h3>Ferrero Fusion</h3><p>Whole Ferrero Rocher, hazelnut praline and dark chocolate.</p><div class="sz">₹250</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-biscoff.jpg" alt="Biscoff Lover thick shake"></div>
+            <h3>Biscoff Lover</h3><p>Caramelised Lotus spread with crumbled speculoos biscuit.</p><div class="sz">₹180</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-chocoblast.jpg" alt="Choco Blast thick shake"></div>
+            <h3>Choco Blast</h3><p>Triple chocolate — dark, milk and white, all in one glass.</p><div class="sz">₹180</div></div>
+                  <div class="d"><div class="dimg"><img src="assets/m-nutella.jpg" alt="Nutty Nutella thick shake" loading="lazy"></div>
+            <h3>Nutty Nutella</h3><p>Nutella with a double hit of toasted hazelnut through every sip.</p><div class="sz">₹140</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-biscoff.jpg" alt="Lotus Biscoff thick shake" loading="lazy"></div>
+            <h3>Lotus Biscoff</h3><p>The classic caramelised biscuit spread, blended cold and thick.</p><div class="sz">₹140</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-biscoff.jpg" alt="Biscoff Crunch thick shake" loading="lazy"></div>
+            <h3>Biscoff Crunch</h3><p>Biscoff base loaded with extra crushed biscuit crunch.</p><div class="sz">₹150</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-ferrero.jpg" alt="Ferrero Rocher thick shake" loading="lazy"></div>
+            <h3>Ferrero Rocher</h3><p>Whole Ferrero blended with praline and dark chocolate.</p><div class="sz">₹180</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-chocoblast.jpg" alt="Choco Brownie Crunch thick shake" loading="lazy"></div>
+            <h3>Choco Brownie Crunch</h3><p>Brownie chunks and chocolate crunch in one loaded glass.</p><div class="sz">₹160</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-chocoblast.jpg" alt="Blueberry Blast thick shake" loading="lazy"></div>
+            <h3>Blueberry Blast</h3><p>Tangy blueberry swirled through thick vanilla cream.</p><div class="sz">₹150</div></div>
+        </div>
+        </div>
+        <div class="arrows"><button onclick="scr(\'c2\',-1)">‹</button><button onclick="scr('c2',1)">›</button></div>
+      </div>
+
+      <div class="panel" id="t3">
+        <div class="drow">
+          <div class="d4" id="c3">
+          <div class="d"><div class="dimg"><img src="assets/m-gulkand.jpg" alt="Kaju Gulkand thick shake"></div>
+            <h3>Kaju Gulkand</h3><p>Rose petal preserve and cashew, a proper Indian classic.</p><div class="sz">₹120 · Pure Veg</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-rajbhog.jpg" alt="Rajbhog Dryfruit thick shake"></div>
+            <h3>Rajbhog Dryfruit</h3><p>Saffron, pistachio and mixed dry fruit blended rich and thick.</p><div class="sz">₹140 · Pure Veg</div></div>
+                  <div class="d"><div class="dimg"><img src="assets/m-rajbhog.jpg" alt="Kaju Badam Pista thick shake" loading="lazy"></div>
+            <h3>Kaju Badam Pista</h3><p>Cashew, almond and pistachio blended rich and nutty.</p><div class="sz">₹140 · Pure Veg</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-rajbhog.jpg" alt="Thandai thick shake" loading="lazy"></div>
+            <h3>Thandai</h3><p>Classic spiced thandai with saffron and mixed nuts.</p><div class="sz">₹120 · Pure Veg</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-gulkand.jpg" alt="Gulab Masti Delight thick shake" loading="lazy"></div>
+            <h3>Gulab Masti Delight</h3><p>Rose and gulkand layered with cream and crushed nuts.</p><div class="sz">₹130 · Pure Veg</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-rajbhog.jpg" alt="Kaju Anjeer thick shake" loading="lazy"></div>
+            <h3>Kaju Anjeer</h3><p>Fig and cashew blended into a naturally sweet thick shake.</p><div class="sz">₹120 · Pure Veg</div></div>
+        </div>
+        </div>
+        <div class="arrows"><button onclick="scr(\'c3\',-1)">‹</button><button onclick="scr('c3',1)">›</button></div>
+      </div>
+
+      <div class="panel" id="t4">
+        <div class="drow">
+          <div class="d4" id="c4">
+          <div class="d"><div class="dimg"><img src="assets/m-cappuccino.jpg" alt="Cappuccino"></div>
+            <h3>Cappuccino</h3><p>Balanced espresso under a thick, velvety milk foam.</p><div class="sz">Freshly brewed daily</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-treats.jpg" alt="Coco Treats - brownie, waffle and donut"></div>
+            <h3>Coco Treats</h3><p>Brownies, waffles and donuts — ask for today's fresh batch.</p><div class="sz">In-store only</div></div>
+                  <div class="d"><div class="dimg"><img src="assets/m-cappuccino.jpg" alt="Cold Coffee" loading="lazy"></div>
+            <h3>Cold Coffee</h3><p>Chilled brewed coffee blended smooth over ice.</p><div class="sz">Freshly brewed daily</div></div>
+          <div class="d"><div class="dimg"><img src="assets/m-cappuccino.jpg" alt="Espresso" loading="lazy"></div>
+            <h3>Espresso</h3><p>A short, intense pull — our house bean at its purest.</p><div class="sz">Freshly brewed daily</div></div>
+        </div>
+        </div>
+        <div class="arrows"><button onclick="scr(\'c4\',-1)">‹</button><button onclick="scr('c4',1)">›</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="mosaic-sec" id="gallery">
+    <div class="pad">
+      <h2 class="ttl rv">Our Space</h2>
+      <p class="sublede rv">Warm cove lighting, soft seating and a calm corner in Bardoli — built for long conversations and late-night cravings.</p>
+      <div class="galgrid rv" id="mos2">
+        <figure class="g big"><img src="assets/interior-1.jpg" alt="COCOVA indoor seating with warm cove lighting">
+          <figcaption>Indoor seating &amp; warm cove lighting</figcaption></figure>
+        <figure class="g"><img src="assets/interior-2.jpg" alt="COCOVA emblem wall and signage">
+          <figcaption>The COCOVA emblem wall</figcaption></figure>
+        <figure class="g"><img src="assets/shop-counter.jpg" alt="COCOVA order counter with thick shake menu boards">
+          <figcaption>Order counter &amp; menu boards</figcaption></figure>
+      </div>
+      <div class="arrows"><button onclick="scr('mos2',-1)">‹</button><button onclick="scr('mos2',1)">›</button></div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit" id="visit">
+    <div class="pad">
+      <h2 class="ttl rv">Come Say Hello</h2>
+      <div class="v2">
+        <div class="vcard rv">
+          <h4>Contact</h4>
+          <div class="vrow"><svg viewBox="0 0 24 24"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <div><b>Address</b><p>Shop 1, Sardar Patel Marg,<br>Bardoli, Gujarat 394601</p></div></div>
+          <div class="vrow"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            <div><b>Phone</b><a href="tel:+919638883696">+91 96388 83696</a></div></div>
+          <div class="vrow"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+            <div><b>Instagram</b><a href="https://instagram.com/cocova.in" target="_blank" rel="noopener">@cocova.in</a></div></div>
+          <div class="vrow"><svg viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>
+            <div><b>Directions</b><a href="https://maps.google.com/?cid=4226375953224306604" target="_blank" rel="noopener">Open in Google Maps →</a></div></div>
+        </div>
+        <div class="vcard rv">
+          <h4>Opening Hours</h4>
+          <table class="hrs">
+            <tr><td>Monday</td><td>11:00 AM – 12:00 AM</td></tr>
+            <tr><td>Tuesday</td><td>11:00 AM – 12:00 AM</td></tr>
+            <tr><td>Wednesday</td><td>11:00 AM – 12:00 AM</td></tr>
+            <tr><td>Thursday</td><td>11:00 AM – 12:00 AM</td></tr>
+            <tr><td>Friday</td><td>11:00 AM – 12:00 AM</td></tr>
+            <tr><td>Saturday</td><td>11:00 AM – 12:30 AM</td></tr>
+            <tr><td>Sunday</td><td>11:00 AM – 12:30 AM</td></tr>
+          </table>
+          <span class="pill">Open 7 Days · 4.5 ★ on Google</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="pad">
+      <div class="f4g">
+        <div>
+          <div class="fbrand"><img src="assets/logo-cream.png" alt="COCOVA"><span>COCOVA</span></div>
+          <p>Taste That Stays with Your Heart. Rich coco treats, creamy thick shakes and freshly brewed coffee — crafted with love in Bardoli.</p>
+          <div class="socials">
+            <a href="https://instagram.com/cocova.in" target="_blank" rel="noopener" aria-label="COCOVA on Instagram" title="Instagram">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://wa.me/919638883696" target="_blank" rel="noopener" aria-label="COCOVA on WhatsApp" title="WhatsApp">
+              <svg viewBox="0 0 24 24"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.3 7.5L3.5 20.5l1.5-4.6a8.4 8.4 0 1 1 15.5-4.3z"/><path d="M8.9 8.2c.3-.1.6 0 .8.3l.8 1.3c.1.2.1.5 0 .7l-.5.7c.6 1.1 1.5 2 2.6 2.6l.7-.5c.2-.1.5-.2.7 0l1.3.8c.3.2.4.5.3.8-.3.9-1.2 1.5-2.1 1.4-2.9-.3-5.4-2.8-5.7-5.7-.1-.9.4-1.8 1.1-2.4z"/></svg>
+            </a>
+            <a href="https://maps.google.com/?cid=4226375953224306604" target="_blank" rel="noopener" aria-label="COCOVA on Google Maps" title="Google Maps">
+              <svg viewBox="0 0 24 24"><path d="M12 21.5s7-6.2 7-11.3A7 7 0 1 0 5 10.2c0 5.1 7 11.3 7 11.3z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            </a>
+            <a href="tel:+919638883696" aria-label="Call COCOVA" title="Call us">
+              <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div><h5>Explore</h5><ul>
+          <li><a href="#about">About Us</a></li><li><a href="#menu">Menu</a></li>
+          <li><a href="#gallery">Gallery</a></li><li><a href="#visit">Visit Us</a></li></ul></div>
+        <div><h5>Menu</h5><ul>
+          <li><a href="#menu">Everyday Classic</a></li><li><a href="#menu">Signature</a></li>
+          <li><a href="#menu">Indian Special</a></li><li><a href="#menu">Coffee</a></li></ul></div>
+        <div><h5>Contact</h5><ul>
+          <li><a href="tel:+919638883696">+91 96388 83696</a></li>
+          <li><a href="https://instagram.com/cocova.in" target="_blank" rel="noopener">@cocova.in</a></li>
+          <li><a href="https://maps.google.com/?cid=4226375953224306604" target="_blank" rel="noopener">Bardoli, Gujarat</a></li>
+          <li>11 AM – 12 AM Daily</li></ul></div>
+      </div>
+      <div class="wm">COCOVA</div>
+      <div class="fbot">
+        <span>© 2026 COCOVA. All rights reserved.</span>
+        <span>Shop 1, Sardar Patel Marg, Bardoli, Gujarat 394601</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+const mm=document.getElementById('mm');
+document.getElementById('bg').onclick=()=>mm.classList.add('on');
+document.getElementById('mx').onclick=()=>mm.classList.remove('on');
+mm.querySelectorAll('a').forEach(a=>a.onclick=()=>mm.classList.remove('on'));
+
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+  t.classList.add('on');
+  document.getElementById(t.dataset.p).classList.add('on');
+});
+
+function scr(id,dir){
+  const el=document.getElementById(id);
+  const card=el.querySelector('.d');
+  const gap=parseFloat(getComputedStyle(el).gap)||16;
+  // step by whole cards so items never end up half-cut
+  const step=card?(card.getBoundingClientRect().width+gap):el.clientWidth*0.8;
+  const per=Math.max(1,Math.floor(el.clientWidth/step));
+  el.scrollBy({left:dir*step*per,behavior:'smooth'});
+}
+
+/* arrow state + right-edge fade for every carousel */
+function syncRail(el){
+  const row=el.closest('.drow');
+  const max=el.scrollWidth-el.clientWidth;
+  const x=el.scrollLeft;
+  if(row) row.classList.toggle('more',max>4&&x<max-4);
+  const box=el.parentElement.querySelector('.arrows')||
+            (row&&row.parentElement.querySelector('.arrows'));
+  if(box){
+    const bs=box.querySelectorAll('button');
+    if(max<=4){box.style.display='none';}
+    else{
+      box.style.display='';
+      bs[0].disabled=x<=2; bs[1].disabled=x>=max-2;
+    }
+  }
+}
+document.querySelectorAll('.d4,.mosaic,.galgrid').forEach(el=>{
+  el.addEventListener('scroll',()=>syncRail(el),{passive:true});
+  // shift+wheel / trackpad horizontal already works; make plain wheel scroll the rail
+  el.addEventListener('wheel',e=>{
+    if(Math.abs(e.deltaX)>Math.abs(e.deltaY))return;
+    const max=el.scrollWidth-el.clientWidth; if(max<=4)return;
+    const x=el.scrollLeft;
+    if((e.deltaY>0&&x>=max-1)||(e.deltaY<0&&x<=1))return;
+    e.preventDefault(); el.scrollLeft+=e.deltaY;
+  },{passive:false});
+  // drag-to-scroll with a mouse
+  let down=false,sx=0,sl=0,moved=false;
+  el.addEventListener('pointerdown',e=>{
+    if(e.pointerType!=='mouse')return;
+    down=true;moved=false;sx=e.clientX;sl=el.scrollLeft;
+  });
+  el.addEventListener('pointermove',e=>{
+    if(!down)return;
+    const d=e.clientX-sx;
+    if(Math.abs(d)>3){moved=true;el.scrollLeft=sl-d;el.style.cursor='grabbing';}
+  });
+  const up=()=>{down=false;el.style.cursor='';};
+  el.addEventListener('pointerup',up); el.addEventListener('pointerleave',up);
+  el.addEventListener('click',e=>{if(moved)e.preventDefault();},true);
+  syncRail(el);
+});
+window.addEventListener('resize',()=>document.querySelectorAll('.d4,.mosaic,.galgrid').forEach(syncRail));
+// panels are hidden until their tab opens, so re-measure on tab switch
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  setTimeout(()=>document.querySelectorAll('.panel.on .d4').forEach(syncRail),60);
+}));
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+}),{threshold:.1});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4*80)+'ms';io.observe(el)});
+</script>
+</body>
+</html>
